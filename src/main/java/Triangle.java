@@ -1,55 +1,76 @@
 public class Triangle {
-    public double a;
-    public double b;
-    public double c;
+    private double a;
+    private double b;
+
+    public double getA() {
+        return a;
+    }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public void setB(double b) {
+        this.b = b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public void setC(double c) {
+        this.c = c;
+    }
+
+    private double c;
 
 
-    public boolean checkIfTriangle() {
-        boolean isTr = false;
-        if (a + b < c || a + c < b || b + c < a || a <= 0 || b <= 0 || c <= 0) {
-            System.out.println("not a triangle");
+    public boolean isTriangle(){
+        boolean isTriangle = false;
+        if (getA() + getB() < getC() || a + getC() < getB() ||
+                getB() + getC() < getA() || getA() <= 0 ||
+                getB() <= 0 || getC() <= 0) {
+            throw new IllegalArgumentException("not a triangle");
         } else {
-            isTr = true;
+            isTriangle = true;
             System.out.println("Traingle completed");
 
         }
-        return isTr;
+        return isTriangle;
     }
 
-    public double checkTringleType() {
-        double t = 0;
-        if (a == b && a == c) {
+    public String getType() {
+
+        if (getA() == getB() && getA() == getC()) {
 
             System.out.println("Traingle is Equilateral");
-            System.out.println("=====================");
-            t = 1;
+            return "Equilateral";
 
-        } else if (a == b || a == c || b == c) {
+        } else if (getA() == getB() || getA() == getC() || getB() == getC()) {
             System.out.println("Traingle is Isosceles");
-            System.out.println("=====================");
-            t = 2;
+            return "Isosceles";
 
-        } else if (a != b && a != c && b != c) {
-            System.out.println("Traingle is Scalene");
-            System.out.println("=====================");
-            t = 3;
-
+        }else
+            return "Scalene";
         }
-        return t;
-    }
 
-    public double calculateSquare(double type) {
 
-        double square = 0;
-        if (type == 1) {
-            square = (Math.sqrt(3) / 4) * (a * a);
-        } else if (type == 2) {
-            square = (b / 4) * Math.sqrt((4 * a * a) - (b * b));
-        } else if (type == 3) {
-            double s4 = (a + b + c) / 2;
-            square = Math.sqrt(s4 * (s4 - a) * (s4 - b) * (s4 - c));
+    public double calculateArea(String type) {
+
+        double area = 0;
+        if (type.equals("Equilateral")) {
+            area = (Math.sqrt(3) / 4) * (getA() * getA());
+        } else if (type.equals("Isosceles")) {
+            area = (getB() / 4) * Math.sqrt((4 * getA() * getA()) - (getB() * getB()));
+        } else if (type.equals("Scalene")) {
+            double s4 = (getA() + getB() + getC()) / 2;
+            area = Math.sqrt(s4 * (s4 - getA()) * (s4 - getB()) * (s4 - getC()));
         }
-        System.out.println("Square is" + " " + square);
-        return square;
+        System.out.println("Square is" + " " + area);
+        return area;
     }
 }

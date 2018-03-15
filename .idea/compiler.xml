@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Calculator" />
+        <module name="Triangle" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Calculator" target="8" />
+      <module name="Triangle" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
