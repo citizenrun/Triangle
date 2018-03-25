@@ -1,74 +1,67 @@
-public class Triangle {
-    private double a;
-    private double b;
+import org.jetbrains.annotations.NotNull;
 
-    public double getA() {
-        return a;
+public class Triangle {
+    private final double a;
+    private final double b;
+    private final double c;
+    private final String type;
+    private final double area;
+
+    Triangle(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        validateForTriangle();
+        type = getTriangleType();
+        area = area();
+
     }
 
-    public void setA(double a) {
-        this.a = a;
+    public double getA() {
+        return this.a;
     }
 
     public double getB() {
-        return b;
-    }
-
-    public void setB(double b) {
-        this.b = b;
+        return this.b;
     }
 
     public double getC() {
-        return c;
+        return this.c;
     }
 
-    public void setC(double c) {
-        this.c = c;
-    }
-
-    private double c;
-
-
-    public boolean isTriangle(){
-        boolean isTriangle = false;
-        if (getA() + getB() < getC() || a + getC() < getB() ||
-                getB() + getC() < getA() || getA() <= 0 ||
-                getB() <= 0 || getC() <= 0) {
+    private void validateForTriangle() {
+        if (a + b < c || a + c < b ||
+                b + c < a || a <= 0 ||
+                b <= 0 || c <= 0) {
             throw new IllegalArgumentException("not a triangle");
-        } else {
-            isTriangle = true;
-            System.out.println("Traingle completed");
-
         }
-        return isTriangle;
     }
 
-    public String getType() {
-
-        if (getA() == getB() && getA() == getC()) {
+    @NotNull
+    private String getTriangleType() {
+        if (a == b && a == c) {
 
             System.out.println("Traingle is Equilateral");
             return "Equilateral";
 
-        } else if (getA() == getB() || getA() == getC() || getB() == getC()) {
+        } else if (a == b || a == c || b == c) {
             System.out.println("Traingle is Isosceles");
             return "Isosceles";
 
-        }else
-            return "Scalene";
-        }
+        } else
+            System.out.println("Traingle is Scalene");
+        return "Scalene";
+    }
 
-
-    public double calculateArea(String type) {
-
+    private double area() {
         double area = 0;
         if (type.equals("Equilateral")) {
-            area = (Math.sqrt(3) / 4) * (getA() * getA());
+            area = (Math.sqrt(3) / 4) * (a * a);
         } else if (type.equals("Isosceles")) {
-            area = (getB() / 4) * Math.sqrt((4 * getA() * getA()) - (getB() * getB()));
+            area = (b / 4) * Math.sqrt((4 * a * a) - (b * b));
         } else if (type.equals("Scalene")) {
-            double s4 = (getA() + getB() + getC()) / 2;
-            area = Math.sqrt(s4 * (s4 - getA()) * (s4 - getB()) * (s4 - getC()));
+            double s4 = (a + b + c) / 2;
+            area = Math.sqrt(s4 * (s4 - a) * (s4 - b) * (s4 - c));
         }
         System.out.println("Square is" + " " + area);
         return area;

@@ -6,56 +6,41 @@ public class OperationTest {
 
     @Test
     public void test1() {
-        Triangle lol = new Triangle();
-        lol.setA(1);
-        lol.setB(2);
-        lol.setC(6);
-
-        if(lol.isTriangle()){
-            lol.calculateArea(lol.getType());
-        }else{
-           throw new IllegalArgumentException("not a trinagle");
-        }
+        new Triangle(2, 3, 2.6);
     }
+
     @Test
     public void test2() {
-        Triangle lol = new Triangle();
-        lol.setA(0);
-        lol.setB(1);
-        lol.setC(1);
-
-        if(lol.isTriangle()){
-            lol.calculateArea(lol.getType());
-        }else{
-            throw new IllegalArgumentException("not a trinagle");
-        }
+        new Triangle(0, 10, 10);
     }
+
     @Test
     public void test3() {
-    Triangle lol = new Triangle();
-        lol.setA(10);
-        lol.setB(5);
-        lol.setC(4);
+        new Triangle(5, 2, 4);
 
-        if(lol.isTriangle()){
-            lol.calculateArea(lol.getType());
-        }else{
-            throw new IllegalArgumentException("not a trinagle");
-        }
-        }
+    }
 
     @Test
     public void test4() {
-        Triangle lol = new Triangle();
-        lol.setA(10);
-        lol.setB(10);
-        lol.setC(19);
+        new Triangle(20, 10, 10);
 
-        if(lol.isTriangle()){
-            lol.calculateArea(lol.getType());
-        }else{
-            throw new IllegalArgumentException("not a trinagle");
-        }
     }
 
+    @Test
+    public void test5() {
+        new Triangle(40, 10, 30);
+
+    }
+
+    @Test
+    public void test6() {
+        new Triangle(45, 45, 45);
+
+    }
+
+    @Test
+    public void test7() {
+        new Triangle(0.5, 0.6, 2);
+
+    }
 }
